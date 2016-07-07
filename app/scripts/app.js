@@ -17,12 +17,7 @@ angular
       .when('/', {
         templateUrl: 'views/ads.html',
         controller: 'AdsCtrl',
-        controllerAs: 'ads'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+        controllerAs: 'adsPage'
       })
       .otherwise({
         redirectTo: '/'

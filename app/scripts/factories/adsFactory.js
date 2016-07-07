@@ -1,25 +1,33 @@
-'use strict';
+( function () {
+  'use strict';
 
-/**
- * @ngdoc function
- * @name vivaApp.factory:adsFactory
- * @description
- * # adsFactory
- * Controller of the vivaApp
- */
-angular.module( 'vivaApp' )
-  .factory( 'AdsFactory', [ '$http', function ( $http ) {
+  /**
+   * @ngdoc function
+   * @name vivaApp.factory:adsFactory
+   * @description
+   * # adsFactory
+   * Controller of the vivaApp
+   */
+  angular.module( 'vivaApp' )
+    .factory( 'AdsFactory', AdsFactory );
 
-    var urlBase = 'http://spotippos.vivareal.com/properties';
-    var adsFactory = {};
+  AdsFactory.$inject = [ '$http' ];
 
-    adsFactory.getById = function ( id ) {
+  function AdsFactory( $http ) {
+    var urlBase = 'http://spotippos.vivareal.com/properties',
+      factory = {
+        getById: getById,
+        getAll: getAll
+      };
+
+    return factory;
+
+    function getById( id ) {
       return $http.get( urlBase + '/' + id );
     };
 
-    adsFactory.getBySize = function ( min, max ) {
-      return $http.get( urlBase + '?ax=' + min + '&ay=' + min + '&bx=' + max + '&by=' + max );
+    function getAll() {
+      return $http.get( urlBase + '?ax=1&ay=1&bx=20&by=20' );
     };
-
-    return adsFactory;
-  } ] );
+  };
+} )();

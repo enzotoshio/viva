@@ -1,14 +1,14 @@
 <form action="get" class="content-box filter-box">
-  <input type="number" ng-model="filter.id" ng-blur="getAdsById()">
-  <input type="number" ng-model="filter.area" ng-blur="getAds()">
-  <input type="number" ng-model="filter.beds" ng-blur="getAds()">
-  <input type="number" ng-model="filter.baths" ng-blur="getAds()">
-  <input type="number" ng-model="filter.min" ng-blur="getAds()">
-  <input type="number" ng-model="filter.max" ng-blur="getAds()">
+  <input type="number" ng-model="adsPage.filter.id" ng-blur="adsPage.getAdsById()">
+  <input type="number" ng-model="adsPage.filter.area" ng-blur="adsPage.getAds()">
+  <input type="number" ng-model="adsPage.filter.beds" ng-blur="adsPage.getAds()">
+  <input type="number" ng-model="adsPage.filter.baths" ng-blur="adsPage.getAds()">
+  <input type="number" ng-model="adsPage.filter.min" ng-blur="adsPage.getAds()">
+  <input type="number" ng-model="adsPage.filter.max" ng-blur="adsPage.getAds()">
 </form>
 
 <ul class="vertical-list ads-list content-box">
-  <li ng-repeat="ad in ads" class="ad-box">
+  <li ng-repeat="ad in adsPage.advs | filter: adsPage.adFilter" class="ad-box">
     <section class="photo-container">
       <img ng-src="" alt="{{ ad.title }}" error-src="http://placehold.it/284x405/252525?text={{ ad.show_title }}">
       <span class="ad-price">{{ ad.price }}</span>
