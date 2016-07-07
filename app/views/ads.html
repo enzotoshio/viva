@@ -10,25 +10,24 @@
 <ul class="vertical-list ads-list content-box">
   <li ng-repeat="ad in adsPage.advs | filter: adsPage.adFilter" class="ad-box">
     <section class="photo-container">
-      <img ng-src="" alt="{{ ad.title }}" error-src="http://placehold.it/284x405/252525?text={{ ad.show_title }}">
-      <span class="ad-price">{{ ad.price }}</span>
+      <img ng-src="" alt="{{ ad.title }}">
+      <span class="ad-price" ng-bind="ad.price"></span>
     </section>
     <section class="ad-info">
-      <p class="id-box">ID.{{ ad.id }}</p>
-      <h3>{{ ad.title }}</h3>
-      <p class="ad-description">
-        {{ ad.description }}
+      <p class="id-box" ng-bind="'ID.' + (ad.id)"></p>
+      <h3 ng-bind="ad.title"></h3>
+      <p class="ad-description" ng-bind="ad.description">
       </p>
       <footer>
         <ul class="ad-details-list horizontal-list">
           <li class="ad-detail size-ico">
-            <span>{{ ad.squareMeters }}</span>
+            <span ng-bind="ad.squareMeters"></span>
           </li>
           <li class="ad-detail bed-ico">
-            <span>{{ ad.beds }}</span>
+            <span ng-bind="ad.beds"></span>
           </li>
           <li class="ad-detail bath-ico">
-            <span>{{ ad.baths }}</span>
+            <span ng-bind="ad.baths"></span>
           </li>
         </ul>
         <div class="button view-button highlight-color">Visualizar o anúncio</div>
