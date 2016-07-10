@@ -1,4 +1,4 @@
-( function () {
+( function() {
   'use strict';
 
   /**
@@ -17,7 +17,7 @@
     var urlBase = 'http://spotippos.vivareal.com/properties',
       factory = {
         getById: getById,
-        getAll: getAll
+        getByLocation: getByLocation
       };
 
     return factory;
@@ -26,8 +26,17 @@
       return $http.get( urlBase + '/' + id );
     };
 
-    function getAll() {
-      return $http.get( urlBase + '?ax=1&ay=1&bx=20&by=20' );
+    function getByLocation( places ) {
+      var calls = [];
+
+      angular.forEach( places, function( place ) {
+        var bottomRight = place.boundaries.bottomRight,
+          topLeft = place.boundaries.upperLeft;
+
+        calls.push( $http.get( urlBase + '?ax=' + topLeft.x + '&ay=' + bottomRight.y + '&bx=' + bottomRight.x + '&by=' + topLeft.y ) );
+      } );
+
+      return calls;
     };
   };
 } )();

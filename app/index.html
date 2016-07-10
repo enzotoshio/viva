@@ -13,6 +13,7 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
   </head>
   <body ng-app="vivaApp">
     <!--[if lte IE 8]>
@@ -25,20 +26,25 @@
         <h1 class="logo-vivareal">
         </h1>
       </div>
-      <h2>Spottippos - Anúncios</h2>
+      <h2 class="page-title">Spottippos - Anúncios</h2>
     </section>
-    <ul class="nav sidebar">
-      <li class="title">Anúncios</li>
-      <li><a ng-href="#/new">Novo anúncio</a></li>
-    </ul>
+    <section class="page-body">
+      <ul class="nav sidebar">
+        <li class="title item">Anúncios</li>
+        <li class="item">
+          <a class="link" ng-href="#/new">Novo anúncio</a>
+        </li>
+      </ul>
 
-    <section class="main-container" ng-view="">
+      <section class="main-container" ng-view="">
+      </section>
     </section>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/q/q.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

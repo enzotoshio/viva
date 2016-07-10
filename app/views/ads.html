@@ -1,32 +1,37 @@
-<form action="get" class="content-box filter-box">
-  <input type="number" ng-model="adsPage.filter.id" ng-blur="adsPage.getAdsById()">
-  <input type="number" ng-model="adsPage.filter.area" ng-blur="adsPage.getAds()">
-  <input type="number" ng-model="adsPage.filter.beds" ng-blur="adsPage.getAds()">
-  <input type="number" ng-model="adsPage.filter.baths" ng-blur="adsPage.getAds()">
-  <input type="number" ng-model="adsPage.filter.min" ng-blur="adsPage.getAds()">
-  <input type="number" ng-model="adsPage.filter.max" ng-blur="adsPage.getAds()">
+<form action="get" class="filter-box">
+  <input type="number" class="default-field" ng-model="adsPage.filter.id" ng-blur="adsPage.getAdsById()">
+  <input type="number" class="default-field" ng-model="adsPage.filter.area" ng-blur="adsPage.getAds()">
+  <input type="number" class="default-field" ng-model="adsPage.filter.beds" ng-blur="adsPage.getAds()">
+  <input type="number" class="default-field" ng-model="adsPage.filter.baths" ng-blur="adsPage.getAds()">
+  <input type="number" class="default-field" ng-model="adsPage.filter.min" ng-blur="adsPage.getAds()">
+  <input type="number" class="default-field" ng-model="adsPage.filter.max" ng-blur="adsPage.getAds()">
 </form>
 
 <ul class="vertical-list ads-list content-box">
+  <li class="spinner" ng-show="adsPage.loading"></li>
   <li ng-repeat="ad in adsPage.advs | filter: adsPage.adFilter" class="ad-box">
     <section class="photo-container">
-      <img ng-src="" alt="{{ ad.title }}">
+      <img ng-src="" alt="{{ ad.title }}" class="ad-photo">
       <span class="ad-price" ng-bind="ad.price"></span>
     </section>
     <section class="ad-info">
-      <p class="id-box" ng-bind="'ID.' + (ad.id)"></p>
-      <h3 ng-bind="ad.title"></h3>
-      <p class="ad-description" ng-bind="ad.description">
-      </p>
-      <footer>
+      <section class="ad-content">
+        <p class="id-box shadowless-box">
+          <span ng-bind="'ID.' + (ad.id)" class="text"></span>
+        </p>
+        <h3 ng-bind="ad.title" class="ad-title"></h3>
+        <p class="ad-description" ng-bind="ad.description">
+        </p>
+      </section>
+      <footer class="ad-footer">
         <ul class="ad-details-list horizontal-list">
-          <li class="ad-detail size-ico">
+          <li class="ad-detail size-ico item">
             <span ng-bind="ad.squareMeters"></span>
           </li>
-          <li class="ad-detail bed-ico">
+          <li class="ad-detail bed-ico item">
             <span ng-bind="ad.beds"></span>
           </li>
-          <li class="ad-detail bath-ico">
+          <li class="ad-detail bath-ico item">
             <span ng-bind="ad.baths"></span>
           </li>
         </ul>
