@@ -1,17 +1,39 @@
 <form action="get" class="filter-box">
-  <input type="number" class="default-field" ng-model="adsPage.filter.id" ng-blur="adsPage.getAdsById()">
-  <input type="number" class="default-field" ng-model="adsPage.filter.area" ng-blur="adsPage.getAds()">
-  <input type="number" class="default-field" ng-model="adsPage.filter.beds" ng-blur="adsPage.getAds()">
-  <input type="number" class="default-field" ng-model="adsPage.filter.baths" ng-blur="adsPage.getAds()">
-  <input type="number" class="default-field" ng-model="adsPage.filter.min" ng-blur="adsPage.getAds()">
-  <input type="number" class="default-field" ng-model="adsPage.filter.max" ng-blur="adsPage.getAds()">
+  <fieldset class="filter-fields-line">
+    <div class="field-box">
+      <label class="field-label" for="id">Id</label>
+      <input type="number" id="idInput" class="default-field" ng-model="adsPage.filter.id" ng-blur="adsPage.getAdsById()">
+    </div>
+    <div class="field-box">
+      <label class="field-label" for="areaInput">Área</label>
+      <input type="number" id="areaInput" class="default-field" ng-model="adsPage.filter.area" ng-blur="adsPage.getAds()">
+    </div>
+  </fieldset>
+  <fieldset class="filter-fields-line">
+    <div class="field-box">
+      <label class="field-label" for="bedsInput">Quartos</label>
+      <input type="number" id="bedsInput" class="default-field" ng-model="adsPage.filter.beds" ng-blur="adsPage.getAds()">
+    </div>
+    <div class="field-box">
+      <label class="field-label" for="bathsInput">Banheiros</label>
+      <input type="number" id="bathsInput" class="default-field" ng-model="adsPage.filter.baths" ng-blur="adsPage.getAds()">
+    </div>
+  </fieldset>
+  <fieldset class="filter-fields-line">
+    <label class="field-label">Valor</label>
+    <input type="number" id="minValueInput" class="default-field inline-field" ng-model="adsPage.filter.min" ng-blur="adsPage.getAds()">
+    <span class="field-conector-box">
+      <span class="field-conector"></span>
+    </span>
+    <input type="number" id="maxValueInput" class="default-field inline-field" ng-model="adsPage.filter.max" ng-blur="adsPage.getAds()">
+  </fieldset>
 </form>
 
 <ul class="vertical-list ads-list content-box">
   <li class="spinner" ng-show="adsPage.loading"></li>
   <li ng-repeat="ad in adsPage.advs | filter: adsPage.adFilter" class="ad-box">
     <section class="photo-container">
-      <img ng-src="" alt="{{ ad.title }}" class="ad-photo">
+      <img ng-src="https://placeholdit.imgix.net/~text?txtsize=33&txt=297.7%C3%97224&w=297.7&h=224" alt="{{ ad.title }}" class="ad-photo">
       <span class="ad-price" ng-bind="ad.price"></span>
     </section>
     <section class="ad-info">

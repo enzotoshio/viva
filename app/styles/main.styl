@@ -1,22 +1,22 @@
 global-reset()
 
-div, section, h1, h2, h3
+div, section, h1, h2, h3, 
+input, fieldset, form, label, 
+span, p
   box-sizing: border-box
   
 html
   width: 100%
-  height: 100%
 
 body
   background-color: #e0e0e0
   width: 100%
-  height: 100%
   font-family: Roboto
 
 .page-body
   overflow: hidden
   width: 100%
-  height: 100%
+  background-color: #f0f0f0
 
 .page-title
   font-size: 24px
@@ -34,14 +34,32 @@ body
   background-color: #1190cd
   overflow: hidden
   
+.building-icon
+  width: 28.8px
+  height: 30.6px
+  background: url(../images/building.svg)
+  background-repeat: no-repeat
+  
+.plus-icon
+  width: 27px
+  height: 26px
+  background: url(../images/plus-icon.svg)
+  background-repeat: no-repeat
+
 .sidebar
   width: 107px
-  height: 100%
+  min-height: 660px
   display: block
   background-color: #094e6e
   float: left
   list-style: none
   padding-top: 15px
+  
+  .building-icon
+    margin: 7px auto 13.6px
+
+  .plus-icon
+    margin: 7px auto 11px
   
   .item
     height: 72px
@@ -88,28 +106,62 @@ body
 .main-container
   float: left
   overflow: hidden
-  height: 100%
-  background-color: #fff
   
 .filter-box
   width: 230px
-  height: 100%
+  min-height: 660px
   border-radius: 2px
   background-color: #f9f9f9
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12)
   float: left
+  margin: 16px 20px 0 18px
+  
+  .field-box
+    float: left
+    &:nth-child(2)
+      margin-left: 13px
+  
+  .field-label
+    display: block
+    clear: both
+    font-size: 12px
+    line-height: 1.5
+    color: #999999
+    text-transform: uppercase
+    
+  .field-conector-box
+    float: left
+    position: relative
+    height: 36px
+    width: 13px
+
+  .field-conector
+    height: 1px
+    background-color: #cccccc
+    width: inherit
+    display: block
+    align(vertical)
+    
+  .inline-field
+    float: left
+    
+.filter-fields-line
+  clear: both
+  width: 100%
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+  padding: 14px 14px 18px 13px
   
 .content-box
   width: 882px
-  height: 100%
   border-radius: 2px
   background-color: #ffffff
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12)
   float: left
+  margin-top: 16px
+  padding-top: 15px
   
 .default-field
   width: 95px
-  margin: 0 13px
   height: 36px
   border-radius: 2px
   background-color: #ffffff
@@ -121,6 +173,7 @@ body
   background-color: #ffffff
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.26)
   overflow: hidden
+  margin-bottom: 18px
   center(849px)
   
 .ad-photo
@@ -142,9 +195,21 @@ body
   background-color: #ffffff
   margin-bottom: 11.6px
   color: #e5e5e5
+  position: relative
   
   .text
+    text-transform: uppercase
     color: #878787
+    font-size: 13px
+    font-weight: bold
+    line-height: 1.15
+    color: #878787
+    width: 46px
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+    display: block
+    align(both)
   
 .ad-info
   height: 100%
@@ -156,6 +221,7 @@ body
   padding-left: 16.3px
   padding-right: 33px
   margin-bottom: 18px
+  height: 144px
 
 .ad-title
   width: 100%
@@ -167,6 +233,7 @@ body
   font-weight: normal
   font-stretch: condensed
   line-height: 1.5
+  margin-bottom: 3.4px
   
 .ad-description
   width: 100%
@@ -189,6 +256,7 @@ body
     float: left
     
 .button
+  text-transform: uppercase
   border-radius: 2px
   background-color: #00acff
   padding: 9px 8px 8px 8px
