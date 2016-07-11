@@ -7,6 +7,9 @@ span, p, footer, ul, ol, li
   
 html
   width: 100%
+  
+html, body
+  min-height: 100%
 
 body
   background-color: #e0e0e0
@@ -16,6 +19,7 @@ body
 .page-body
   overflow: hidden
   width: 100%
+  height: 100%
   background-color: #f0f0f0
 
 .page-title
@@ -35,20 +39,43 @@ body
   overflow: hidden
   
 .building-icon
+  display: block
   width: 28.8px
   height: 30.6px
   background: url(../images/building.svg)
   background-repeat: no-repeat
   
 .plus-icon
+  display: block
   width: 27px
   height: 26px
   background: url(../images/plus-icon.svg)
   background-repeat: no-repeat
+  
+.area-icon
+  display: block
+  width: 24px
+  height: 24px
+  background: url(../images/ic-card-area.svg)
+  background-repeat: no-repeat
+  
+.bath-icon
+  display: block
+  width: 24px
+  height: 24px
+  background: url(../images/ic-card-bathroom.svg)
+  background-repeat: no-repeat
+  
+.bed-icon
+  display: block
+  width: 24px
+  height: 24px
+  background: url(../images/ic-card-beds.svg)
+  background-repeat: no-repeat
 
 .sidebar
   width: 107px
-  min-height: 660px
+  height: 1288px
   display: block
   background-color: #094e6e
   float: left
@@ -109,12 +136,21 @@ body
   
 .filter-box
   width: 230px
-  min-height: 660px
+  height: 1272px
   border-radius: 2px
   background-color: #f9f9f9
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12)
   float: left
   margin: 16px 20px 0 18px
+  
+  .filter-title
+    font-family: Roboto
+    font-size: 16px
+    font-weight: normal
+    font-stretch: condensed
+    line-height: 1.25
+    color: #666666
+    padding: 13px 0 1px 13px
   
   .field-box
     float: left
@@ -153,6 +189,7 @@ body
   
 .content-box
   width: 882px
+  height: 100%
   border-radius: 2px
   background-color: #ffffff
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12)
@@ -248,7 +285,32 @@ body
   height: 50px
   background-color: #fafafa
   box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1)
+  position: relative
   
+  .view-button
+    float: right
+    right: 8px
+    align(vertical)
+  
+  .ad-details-list
+    margin-top: 6px
+    margin-left: 21px
+    overflow: hidden
+    float: left
+
+    .ad-detail
+      position: relative
+      text-transform: uppercase
+      margin-right: 14.5px
+      font-size: 13px
+      font-weight: bold
+      font-stretch: condensed
+      color: #999999
+
+      .icon
+        margin: 0 auto
+        clear: both
+      
 .horizontal-list
   display: block
   
@@ -267,6 +329,28 @@ body
   font-stretch: condensed
   line-height: 1.14
   color: #ffffff
+
+.pagination-line
+  position: relative
+  display: block
+  height: 32px
+  margin-bottom: 15px
+
+.pagination-box
+  align(horizontal)
+  .page-details
+    font-size: 14px
+    font-weight: normal
+    font-stretch: condensed
+    color: #999
+
+  .nav-button
+    cursor: pointer
+    user-select: none
+
+    &.disabled
+      background-color: #cccccc
+      pointer-events: none
 
 @keyframes spinner
   to {transform: rotate(360deg)}
