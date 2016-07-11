@@ -1,4 +1,4 @@
-( function() {
+( function () {
   'use strict';
 
   /**
@@ -24,12 +24,15 @@
     vm.parseLists = parseLists;
     vm.removeDuplicity = removeDuplicity;
 
+    vm.getAds();
+
     function getAdsById() {
       var id = vm.filter.id;
 
       vm.advs = [];
 
       if ( !id ) {
+        vm.getAds();
         return;
       }
 
@@ -70,21 +73,22 @@
       vm.advs = [];
       vm.loading = true;
 
-      $http.get( 'https://raw.githubusercontent.com/VivaReal/code-challenge/master/provinces.json' ).then( function( response ) {
-        Q.all( AdsFactory.getByLocation( response.data ) )
-          .then( function( response ) {
-            var parsedList = vm.parseLists( response );
-            vm.loading = false;
-            vm.advs = parsedList;
-            $scope.$apply();
-          } );
-      } );
+      $http.get( 'https://raw.githubusercontent.com/VivaReal/code-challenge/master/provinces.json' )
+        .then( function ( response ) {
+          Q.all( AdsFactory.getByLocation( response.data ) )
+            .then( function ( response ) {
+              var parsedList = vm.parseLists( response );
+              vm.loading = false;
+              vm.advs = parsedList;
+              $scope.$apply();
+            } );
+        } );
     };
 
     function parseLists( response ) {
       var list = [];
 
-      angular.forEach( response, function( listFragment ) {
+      angular.forEach( response, function ( listFragment ) {
         list = list.concat( listFragment.data.properties )
       } );
 
@@ -98,10 +102,10 @@
         baths = vm.filter.baths,
         min = vm.filter.min,
         max = vm.filter.max,
-        areaCondition = area === undefined || ad.squareMeters == area,
-        bedsCondition = beds === undefined || ad.beds == beds,
-        bathsCondition = baths === undefined || ad.baths == baths,
-        priceCondition = ( min === undefined && max === undefined ) || parseInt( ad.price ) >= ( min || 0 ) && parseInt( ad.price ) <= ( max || min );
+        areaCondition = !area || ad.squareMeters == area,
+        bedsCondition = !beds || ad.beds == beds,
+        bathsCondition = !baths || ad.baths == baths,
+        priceCondition = ( !min && !max ) || parseInt( ad.price ) >= ( min || 0 ) && parseInt( ad.price ) <= ( max || min );
       return areaCondition && bedsCondition && bathsCondition && priceCondition;
     }
   };

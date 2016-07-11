@@ -6,26 +6,26 @@
     </div>
     <div class="field-box">
       <label class="field-label" for="areaInput">Área</label>
-      <input type="number" id="areaInput" class="default-field" ng-model="adsPage.filter.area" ng-blur="adsPage.getAds()">
+      <input type="number" id="areaInput" class="default-field" ng-model="adsPage.filter.area">
     </div>
   </fieldset>
   <fieldset class="filter-fields-line">
     <div class="field-box">
       <label class="field-label" for="bedsInput">Quartos</label>
-      <input type="number" id="bedsInput" class="default-field" ng-model="adsPage.filter.beds" ng-blur="adsPage.getAds()">
+      <input type="number" id="bedsInput" class="default-field" ng-model="adsPage.filter.beds">
     </div>
     <div class="field-box">
       <label class="field-label" for="bathsInput">Banheiros</label>
-      <input type="number" id="bathsInput" class="default-field" ng-model="adsPage.filter.baths" ng-blur="adsPage.getAds()">
+      <input type="number" id="bathsInput" class="default-field" ng-model="adsPage.filter.baths">
     </div>
   </fieldset>
   <fieldset class="filter-fields-line">
     <label class="field-label">Valor</label>
-    <input type="number" id="minValueInput" class="default-field inline-field" ng-model="adsPage.filter.min" ng-blur="adsPage.getAds()">
+    <input type="number" id="minValueInput" class="default-field inline-field" ng-model="adsPage.filter.min">
     <span class="field-conector-box">
       <span class="field-conector"></span>
     </span>
-    <input type="number" id="maxValueInput" class="default-field inline-field" ng-model="adsPage.filter.max" ng-blur="adsPage.getAds()">
+    <input type="number" id="maxValueInput" class="default-field inline-field" ng-model="adsPage.filter.max">
   </fieldset>
 </form>
 
