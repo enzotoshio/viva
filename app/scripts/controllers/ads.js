@@ -1,6 +1,24 @@
 ( function () {
   'use strict';
 
+  angular.module( 'vivaApp' )
+    .filter( 'startFrom', function () {
+      return function ( input, vm ) {
+        var page = vm.currentPage * vm.pageSize,
+          items = input.length,
+          totalPages = 0;
+
+        if ( items <= 0 ) {
+          return;
+        }
+
+        totalPages = items / vm.pageSize;
+        vm.totalPages = totalPages;
+
+        return input.slice( page );
+      }
+    } );
+
   /**
    * @ngdoc function
    * @name vivaApp.controller:MainCtrl
@@ -17,6 +35,8 @@
     var vm = this;
     vm.advs = [];
     vm.filter = {};
+    vm.currentPage = 0;
+    vm.pageSize = 5;
 
     vm.getAdsById = getAdsById;
     vm.getAds = getAds;
@@ -96,7 +116,6 @@
     };
 
     function adFilter( ad ) {
-      debugger
       var area = vm.filter.area,
         beds = vm.filter.beds,
         baths = vm.filter.baths,

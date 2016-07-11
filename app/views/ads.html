@@ -1,4 +1,5 @@
 <form action="get" class="filter-box">
+  <p class="filter-title">Filtros:</p>
   <fieldset class="filter-fields-line">
     <div class="field-box">
       <label class="field-label" for="id">Id</label>
@@ -31,7 +32,7 @@
 
 <ul class="vertical-list ads-list content-box">
   <li class="spinner" ng-show="adsPage.loading"></li>
-  <li ng-repeat="ad in adsPage.advs | filter: adsPage.adFilter" class="ad-box">
+  <li ng-repeat="ad in adsPage.advs | filter: adsPage.adFilter | startFrom: adsPage | limitTo: adsPage.pageSize" class="ad-box">
     <section class="photo-container">
       <img ng-src="https://placeholdit.imgix.net/~text?txtsize=33&txt=297.7%C3%97224&w=297.7&h=224" alt="{{ ad.title }}" class="ad-photo">
       <span class="ad-price" ng-bind="ad.price"></span>
@@ -48,17 +49,27 @@
       <footer class="ad-footer">
         <ul class="ad-details-list horizontal-list">
           <li class="ad-detail size-ico item">
-            <span ng-bind="ad.squareMeters"></span>
+            <span class="area-icon icon"></span>
+            <span ng-bind="(ad.squareMeters) + 'm²'"></span>
           </li>
           <li class="ad-detail bed-ico item">
-            <span ng-bind="ad.beds"></span>
+            <span class="bath-icon icon"></span>
+            <span ng-bind="(ad.beds) + 'quartos'"></span>
           </li>
           <li class="ad-detail bath-ico item">
-            <span ng-bind="ad.baths"></span>
+            <span class="bed-icon icon"></span>
+            <span ng-bind="(ad.baths) + 'banheiros'"></span>
           </li>
         </ul>
         <div class="button view-button highlight-color">Visualizar o anúncio</div>
       </footer>
     </section>
+  </li>
+  <li class="pagination-line">
+    <div class="pagination-box">
+      <span ng-click="adsPage.currentPage=adsPage.currentPage-1" ng-class="{disabled: adsPage.currentPage == 0}" class="nav-button button">&lt;</span>
+      <span ng-bind="'Page ' + (adsPage.currentPage + 1) + ' of ' + (adsPage.totalPages)" class="page-details"></span>
+      <span ng-click="adsPage.currentPage=adsPage.currentPage+1" ng-class="{disabled: adsPage.currentPage >= adsPage.totalPages}" class="nav-button button">&gt;</span>
+    </div>
   </li>
 </ul>
