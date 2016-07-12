@@ -110,10 +110,14 @@
         baths = vm.filter.baths,
         min = vm.filter.min,
         max = vm.filter.max,
+        price = parseInt( ad.price ),
         areaCondition = !area || ad.squareMeters == area,
         bedsCondition = !beds || ad.beds == beds,
         bathsCondition = !baths || ad.baths == baths,
-        priceCondition = ( !min && !max ) || parseInt( ad.price ) >= ( min || 0 ) && parseInt( ad.price ) <= ( max || min );
+        maxPriceCondition = max > 0 ? price <= max : true,
+        minPriceCondition = price >= ( min || 0 ),
+        priceCondition = ( !min && !max ) || minPriceCondition && maxPriceCondition;
+
       return areaCondition && bedsCondition && bathsCondition && priceCondition;
     }
   };
