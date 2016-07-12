@@ -43,8 +43,15 @@
     vm.adFilter = adFilter;
     vm.parseLists = parseLists;
     vm.removeDuplicity = removeDuplicity;
+    vm.parsePrice = parsePrice;
 
     vm.getAds();
+
+    function parsePrice( price ) {
+      price = +price;
+
+      return price.toLocaleString( 'de-DE' );
+    }
 
     function getAdsById() {
       var id = vm.filter.id;
