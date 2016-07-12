@@ -361,13 +361,18 @@ body
   color: #ffffff
 
 .pagination-line
-  position: relative
-  display: block
+  display: flex
+  flex-direction: column
+  align-items: center
   height: 32px
   margin-bottom: 15px
 
 .pagination-box
-  align(horizontal)
+  display: flex
+  flex-direction: row
+  align-items: center
+  justify-content: space-between
+  width: 150px
   .page-details
     font-size: 14px
     font-weight: normal
