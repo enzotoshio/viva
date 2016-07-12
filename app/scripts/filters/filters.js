@@ -1,25 +1,40 @@
 ( function () {
   'use strict';
   angular.module( 'vivaApp' )
-    .filter( 'startFrom', function () {
-      return function ( input, vm ) {
-        var page = vm.currentPage * vm.pageSize,
-          items = input.length,
-          totalPages = vm.totalPages;
+    .filter( 'startFrom', startFrom );
 
-        if ( items <= 0 ) {
-          return;
-        }
+  function startFrom() {
+    var fm = this;
 
-        totalPages = items / vm.pageSize;
+    fm.filter = filter;
+    fm.calculatePagination = calculatePagination;
 
-        if ( totalPages < 1 ) {
-          totalPages = 1;
-        }
+    return fm.filter;
 
-        vm.totalPages = totalPages;
+    function filter( input, vm ) {
+      var page = vm.currentPage * vm.pageSize;
 
-        return input.slice( page );
+
+      fm.calculatePagination( input, vm );
+
+      return input.slice( page );
+    }
+
+    function calculatePagination( input, vm ) {
+      var items = input.length,
+        totalPages = vm.totalPages;
+
+      if ( items <= 0 ) {
+        return;
       }
-    } );
+
+      totalPages = Math.ceil( items / vm.pageSize );
+
+      if ( totalPages < 1 ) {
+        totalPages = 1;
+      }
+
+      vm.totalPages = totalPages;
+    }
+  };
 } )();
