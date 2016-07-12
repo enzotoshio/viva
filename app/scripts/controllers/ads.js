@@ -10,7 +10,7 @@
   angular.module( 'vivaApp' )
     .controller( 'AdsCtrl', AdsCtrl );
 
-  AdsCtrl.$inject = [ '$scope', '$window', '$http', 'AdsFactory' ];
+  AdsCtrl.$inject = [ '$scope', '$window', '$http', 'AdsFactory', 'ProvincesFactory' ];
 
   function AdsCtrl( $scope, $window, $http, AdsFactory ) {
     var vm = this;

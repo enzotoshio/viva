@@ -1,5 +1,13 @@
 ( function () {
   'use strict';
+
+  /**
+   * @ngdoc function
+   * @name vivaApp.filter:startFrom
+   * @description
+   * # startFrom
+   * Filter of the vivaApp
+   */
   angular.module( 'vivaApp' )
     .filter( 'startFrom', startFrom );
 
