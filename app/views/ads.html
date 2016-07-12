@@ -33,7 +33,9 @@
 </section>
 
 <ul class="vertical-list ads-list content-box">
-  <li class="spinner" ng-show="adsPage.loading"></li>
+  <li class="spinner-box" ng-show="adsPage.loading">
+    <div class="spinner"></div>
+  </li>
   <li ng-repeat="ad in adsPage.advs | filter: adsPage.adFilter | startFrom: adsPage | limitTo: adsPage.pageSize" class="ad-box">
     <section class="photo-container">
       <img ng-src="https://placeholdit.imgix.net/~text?txtsize=33&txt=Image&w=297.7&h=224" alt="{{ ad.title }}" class="ad-photo">
