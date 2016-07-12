@@ -1,4 +1,3 @@
-// Generated on 2016-07-06 using generator-angular 0.15.1
 'use strict';
 
 // # Globbing
@@ -9,6 +8,7 @@
 
 module.exports = function ( grunt ) {
 
+  // Import Rupture
   var rupture = require( 'rupture' );
 
   // Time how long tasks take. Can help when optimizing build times
@@ -49,10 +49,6 @@ module.exports = function ( grunt ) {
           livereload: '<%= connect.options.livereload %>'
         }
       },
-      jsTest: {
-        files: [ 'test/spec/{,*/}*.js' ],
-        tasks: [ 'newer:jshint:test', 'newer:jscs:test', 'karma' ]
-      },
       styles: {
         files: [ '<%= yeoman.app %>/styles/{,*/}*.styl' ],
         tasks: [ 'newer:copy:styles', 'stylus' ]
@@ -72,7 +68,7 @@ module.exports = function ( grunt ) {
       }
     },
 
-    // The actual grunt server settings
+    // The actual server
     connect: {
       options: {
         port: 9000,
@@ -103,30 +99,17 @@ module.exports = function ( grunt ) {
       }
     },
 
-    // Empties folders to start fresh
+    // Cleans server folders
     clean: {
-      dist: {
-        files: [ {
-          dot: true,
-          src: [
-            '.tmp',
-            '<%= yeoman.dist %>/{,*/}*',
-            '!<%= yeoman.dist %>/.git{,*/}*'
-          ]
-        } ]
-      },
       server: '.tmp'
     },
 
+    // Compile stylus
     stylus: {
       compile: {
         options: {
-          paths: [
-            'node_modules/jeet/stylus'
-          ],
           use: [ rupture ],
           import: [
-            'jeet/*',
             'nib/*'
           ]
         },
@@ -141,98 +124,6 @@ module.exports = function ( grunt ) {
       app: {
         src: [ '<%= yeoman.app %>/index.html' ],
         ignorePath: /\.\.\//
-      },
-      test: {
-        devDependencies: true,
-        src: '<%= karma.unit.configFile %>',
-        ignorePath: /\.\.\//,
-        fileTypes: {
-          js: {
-            block: /(([\s\t]*)\/{2}\s*?bower:\s*?(\S*))(\n|\r|.)*?(\/{2}\s*endbower)/gi,
-            detect: {
-              js: /'(.*\.js)'/gi
-            },
-            replace: {
-              js: '\'{{filePath}}\','
-            }
-          }
-        }
-      }
-    },
-
-    // Renames files for browser caching purposes
-    filerev: {
-      dist: {
-        src: [
-          '<%= yeoman.dist %>/scripts/{,*/}*.js',
-          '<%= yeoman.dist %>/styles/{,*/}*.css',
-          '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-          '<%= yeoman.dist %>/styles/fonts/*'
-        ]
-      }
-    },
-
-    // Reads HTML for usemin blocks to enable smart builds that automatically
-    // concat, minify and revision files. Creates configurations in memory so
-    // additional tasks can operate on them
-    useminPrepare: {
-      html: '<%= yeoman.app %>/index.html',
-      options: {
-        dest: '<%= yeoman.dist %>',
-        flow: {
-          html: {
-            steps: {
-              js: [ 'concat', 'uglifyjs' ],
-              css: [ 'cssmin' ]
-            },
-            post: {}
-          }
-        }
-      }
-    },
-
-    // Performs rewrites based on filerev and the useminPrepare configuration
-    usemin: {
-      html: [ '<%= yeoman.dist %>/{,*/}*.html' ],
-      css: [ '<%= yeoman.dist %>/styles/{,*/}*.css' ],
-      js: [ '<%= yeoman.dist %>/scripts/{,*/}*.js' ],
-      options: {
-        assetsDirs: [
-          '<%= yeoman.dist %>',
-          '<%= yeoman.dist %>/images',
-          '<%= yeoman.dist %>/styles'
-        ],
-        patterns: {
-          js: [ [ /(images\/[^''""]*\.(png|jpg|jpeg|gif|webp|svg))/g, 'Replacing references to images' ] ]
-        }
-      }
-    },
-
-    imagemin: {
-      dist: {
-        files: [ {
-          expand: true,
-          cwd: '<%= yeoman.app %>/images',
-          src: '{,*/}*.{png,jpg,jpeg,gif}',
-          dest: '<%= yeoman.dist %>/images'
-        } ]
-      }
-    },
-
-    htmlmin: {
-      dist: {
-        options: {
-          collapseWhitespace: true,
-          conservativeCollapse: true,
-          collapseBooleanAttributes: true,
-          removeCommentsFromCDATA: true
-        },
-        files: [ {
-          expand: true,
-          cwd: '<%= yeoman.dist %>',
-          src: [ '*.html' ],
-          dest: '<%= yeoman.dist %>'
-        } ]
       }
     },
 
@@ -249,40 +140,8 @@ module.exports = function ( grunt ) {
       }
     },
 
-    // ng-annotate tries to make the code safe for minification automatically
-    // by using the Angular long form for dependency injection.
-    ngAnnotate: {
-      dist: {
-        files: [ {
-          expand: true,
-          cwd: '.tmp/concat/scripts',
-          src: '*.js',
-          dest: '.tmp/concat/scripts'
-        } ]
-      }
-    },
-
-    // Copies remaining files to places other tasks can use
+    // Copy stuff
     copy: {
-      dist: {
-        files: [ {
-          expand: true,
-          dot: true,
-          cwd: '<%= yeoman.app %>',
-          dest: '<%= yeoman.dist %>',
-          src: [
-            '*.{ico,png,txt}',
-            '*.html',
-            'images/{,*/}*.{webp}',
-            'styles/fonts/{,*/}*.*'
-          ]
-        }, {
-          expand: true,
-          cwd: '.tmp/images',
-          dest: '<%= yeoman.dist %>/images',
-          src: [ 'generated/*' ]
-        } ]
-      },
       styles: {
         expand: true,
         cwd: '<%= yeoman.app %>/styles',
@@ -291,32 +150,13 @@ module.exports = function ( grunt ) {
       }
     },
 
-    // Run some tasks in parallel to speed up the build process
+    // Run concurrent taks
     concurrent: {
       server: [
-        // 'copy:styles',
         'stylus',
-      ],
-      test: [
-        // 'copy:styles',
-        'stylus',
-      ],
-      dist: [
-        // 'copy:styles',
-        'stylus',
-        'imagemin'
       ]
-    },
-
-    // Test settings
-    karma: {
-      unit: {
-        configFile: 'test/karma.conf.js',
-        singleRun: true
-      }
     }
   } );
-
 
   grunt.registerTask( 'serve', 'Compile then start a connect web server', function ( target ) {
     grunt.task.run( [
@@ -329,9 +169,6 @@ module.exports = function ( grunt ) {
   } );
 
   grunt.registerTask( 'default', [
-    'newer:jshint',
-    'newer:jscs',
-    'test',
-    'build'
+    'serve'
   ] );
 };
