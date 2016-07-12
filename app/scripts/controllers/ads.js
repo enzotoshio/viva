@@ -12,7 +12,7 @@
 
   AdsCtrl.$inject = [ '$scope', '$window', '$http', 'AdsFactory', 'ProvincesFactory' ];
 
-  function AdsCtrl( $scope, $window, $http, AdsFactory ) {
+  function AdsCtrl( $scope, $window, $http, AdsFactory, ProvincesFactory ) {
     var vm = this;
     vm.advs = [];
     vm.filter = {};
@@ -82,8 +82,8 @@
       vm.advs = [];
       vm.loading = true;
 
-      $http.get( 'https://raw.githubusercontent.com/VivaReal/code-challenge/master/provinces.json' )
-        .then( function ( response ) {
+      ProvincesFactory.getAll()
+        .then( function successCallback( response ) {
           Q.all( AdsFactory.getByLocation( response.data ) )
             .then( function ( response ) {
               var parsedList = vm.parseLists( response );
@@ -91,6 +91,8 @@
               vm.advs = parsedList;
               $scope.$apply();
             } );
+        }, function errorCallback() {
+          return;
         } );
     };
 
