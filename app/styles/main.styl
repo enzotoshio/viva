@@ -151,12 +151,32 @@
   height: 100%
   flex-shrink: 0
 
+.photo-gradient
+  position: absolute
+  bottom: 0
+  left: 0
+  height: 99px
+  width: 100%
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(20, 13, 13, 0.3) 32%, rgba(0, 0, 0, 0))
+  z-index: 1
+
+.ad-price
+  position: absolute
+  bottom: 10px
+  left: 12px
+  font-family: 'Open Sans', sans-serif
+  font-size: 23.1px
+  font-weight: 600
+  line-height: 1.39
+  color: #ffffff
+  z-index: 2
+
 .photo-container
   width: 297.7px
   height: 223.6px
   overflow: hidden
-  display: flex
-  flex-direction: column
+  display: block
+  position: relative
   flex-shrink: 0
 
 .id-box
