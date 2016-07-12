@@ -24,6 +24,8 @@ body
   display: flex
   flex-direction: row
   flex-wrap: nowrap
+  +mobile()
+    flex-direction: column
 
 .page-title
   font-size: 24px
@@ -80,7 +82,6 @@ body
   width: 107px
   min-width: 69px
   height: 1288px
-  display: block
   background-color: #094e6e
   list-style: none
   padding-top: 15px
@@ -89,12 +90,32 @@ body
   display: flex
   flex-direction: column
   align-items: stretch
+  +mobile()
+    width: 100%
+    min-width: initial
+    flex-direction: row
+    justify-content: space-around
+    height: auto
+    padding-top: 10px
+    padding-bottom: 10px
   
   .building-icon
     margin: 7px auto 13.6px
+    +mobile()
+      margin-top: 0
+      margin-bottom: 0
+      margin-right: 10px
+      margin-left: 0
+      flex-shrink: 0
 
   .plus-icon
     margin: 7px auto 11px
+    +mobile()
+      margin-top: 0
+      margin-bottom: 0
+      margin-right: 10px
+      margin-left: 0
+      flex-shrink: 0
   
   .item
     height: 72px
@@ -104,6 +125,14 @@ body
     color: #ffffff
     text-align: center
     margin-bottom: 15px
+    +mobile()
+      height: 50px
+      margin-bottom: 0
+      display: flex
+      flex-direction: row
+      align-items: center
+      padding: 10px
+      flex-shrink: 0
     
   .link
     text-decoration: none
@@ -141,6 +170,8 @@ body
   display: flex
   flex-direction: row
   flex-wrap: nowrap
+  +mobile()
+    flex-direction: column
   
 .filter-box
   width: 230px
@@ -153,6 +184,12 @@ body
   flex-direction: column
   flex-wrap: nowrap
   flex-shrink: 4
+  +mobile()
+    height: 294px
+    width: initial
+    flex-shrink: 0
+    margin-left: 10px
+    margin-right: 10px
   
   .filter-title
     font-family: Roboto
@@ -195,6 +232,14 @@ body
     flex-direction: row
     flex-wrap: wrap
     justify-content: space-between
+    +mobile()
+      justify-content: flex-start
+      flex-shrink: 0
+      flex-wrap: nowrap
+      
+  .field-box
+    +mobile()
+      margin-right: 13px
   
   .composed-fields-line
     width: 100%
@@ -221,6 +266,12 @@ body
   padding-top: 15px
   padding-left: 16.5px
   padding-right: 16.5px
+  +mobile()
+    padding-right: 10px
+    padding-left: 10px
+    max-width: initial
+    min-width: initial
+    background-color: #f0f0f0
   
 .default-field
   width: 95px
@@ -239,18 +290,25 @@ body
   display: flex
   flex-direction: row
   flex-wrap: nowrap
+  +mobile()
+    height: auto
+    flex-direction: column
   
 .ad-photo
   width: 100%
   height: 100%
+  flex-shrink: 0
   
 .photo-container
   width: 297.7px
-  height: 224px
+  height: 223.6px
   overflow: hidden
   display: flex
   flex-direction: column
   flex-shrink: 0
+  +mobile()
+    width: 100%
+    height: 254.81px
   
 .shadowless-box
   border-radius: 2px
@@ -266,6 +324,7 @@ body
   flex-direction: column
   justify-content: center
   align-items: center
+  flex-shrink: 0
   
   .text
     text-transform: uppercase
@@ -274,11 +333,6 @@ body
     font-weight: bold
     line-height: 1.15
     color: #878787
-    width: 46px
-    overflow: hidden
-    text-overflow: ellipsis
-    white-space: nowrap
-    display: block
   
 .ad-info
   height: 100%
@@ -287,12 +341,21 @@ body
   padding-top: 12px
   display: flex
   flex-direction: column
+  +mobile()
+    max-width: 339px
+    min-width: 270px
+    padding-bottom: 12px
+    flex-shrink: 0
   
 .ad-content
   padding-left: 16.3px
   padding-right: 33px
   margin-bottom: 18px
   height: 144px
+  overflow: hidden
+  +mobile()
+    padding-right: 16.3px
+    height: auto
 
 .ad-title
   width: 100%
@@ -322,15 +385,27 @@ body
   display: flex
   flex-direction: row
   align-items: center
+  justify-content: space-between
+  +mobile()
+    height: auto
+    flex-direction: column
+    flex-shrink: 0
+    padding-left: 16.3px
+    padding-right: 16.3px
+    padding-top: 12px
   
   .view-button
-    float: right
-    right: 8px
+    align-self: center
+    margin-right: 8px
+    +mobile()
+      width: 100%
   
   .ad-details-list
     margin-left: 21px
     overflow: hidden
-    float: left
+    +mobile()
+      margin-left: 0
+      margin-bottom: 10px
 
     .ad-detail
       position: relative
@@ -362,6 +437,7 @@ body
   line-height: 1.14
   color: #ffffff
   flex-shrink: 0
+  justify-content: center
 
 .pagination-line
   display: flex
@@ -381,6 +457,9 @@ body
     font-weight: normal
     font-stretch: condensed
     color: #999
+    white-space: nowrap
+    margin-right: 10px
+    margin-left: 10px
 
   .nav-button
     cursor: pointer

@@ -9,8 +9,11 @@
 
 module.exports = function ( grunt ) {
 
+  var rupture = require( 'rupture' );
+
   // Time how long tasks take. Can help when optimizing build times
   require( 'time-grunt' )( grunt );
+
 
   // Automatically load required Grunt tasks
   require( 'jit-grunt' )( grunt, {
@@ -121,6 +124,7 @@ module.exports = function ( grunt ) {
           paths: [
             'node_modules/jeet/stylus'
           ],
+          use: [ rupture ],
           import: [
             'jeet/*',
             'nib/*'
