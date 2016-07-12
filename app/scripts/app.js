@@ -9,17 +9,17 @@
  * Main module of the application.
  */
 angular
-  .module('vivaApp', [
+  .module( 'vivaApp', [
     'ngRoute'
-  ])
-  .config(function ($routeProvider) {
+  ] )
+  .config( function ( $routeProvider ) {
     $routeProvider
-      .when('/', {
+      .when( '/', {
         templateUrl: 'views/ads.html',
         controller: 'AdsCtrl',
         controllerAs: 'adsPage'
-      })
-      .otherwise({
+      } )
+      .otherwise( {
         redirectTo: '/'
-      });
-  });
+      } );
+  } );

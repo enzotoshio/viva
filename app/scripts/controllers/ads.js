@@ -1,24 +1,5 @@
 ( function () {
   'use strict';
-
-  angular.module( 'vivaApp' )
-    .filter( 'startFrom', function () {
-      return function ( input, vm ) {
-        var page = vm.currentPage * vm.pageSize,
-          items = input.length,
-          totalPages = 0;
-
-        if ( items <= 0 ) {
-          return;
-        }
-
-        totalPages = items / vm.pageSize;
-        vm.totalPages = totalPages;
-
-        return input.slice( page );
-      }
-    } );
-
   /**
    * @ngdoc function
    * @name vivaApp.controller:MainCtrl
@@ -37,6 +18,7 @@
     vm.filter = {};
     vm.currentPage = 0;
     vm.pageSize = 5;
+    vm.totalPages = 1;
 
     vm.getAdsById = getAdsById;
     vm.getAds = getAds;

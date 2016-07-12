@@ -72,7 +72,7 @@
     <div class="pagination-box">
       <span ng-click="adsPage.currentPage=adsPage.currentPage-1" ng-class="{disabled: adsPage.currentPage == 0}" class="nav-button button">&lt;</span>
       <span ng-bind="'Page ' + (adsPage.currentPage + 1) + ' of ' + (adsPage.totalPages)" class="page-details"></span>
-      <span ng-click="adsPage.currentPage=adsPage.currentPage+1" ng-class="{disabled: adsPage.currentPage >= adsPage.totalPages}" class="nav-button button">&gt;</span>
+      <span ng-click="adsPage.currentPage=adsPage.currentPage+1" ng-class="{disabled: (adsPage.currentPage + 1) >= adsPage.totalPages}" class="nav-button button">&gt;</span>
     </div>
   </li>
 </ul>
