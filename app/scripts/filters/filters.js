@@ -22,7 +22,6 @@
     function filter( input, vm ) {
       var page = vm.currentPage * vm.pageSize;
 
-
       fm.calculatePagination( input, vm );
 
       return input.slice( page );
@@ -33,6 +32,8 @@
         totalPages = vm.totalPages;
 
       if ( items <= 0 ) {
+        vm.totalPages = 1;
+
         return;
       }
 
