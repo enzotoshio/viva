@@ -18,9 +18,9 @@ $ bower i
 $ grunt serve
 ```
 
-## Test (Alternative)
+## Test
 
-E2e tests - Protractor:
+E2e tests - Protractor (Run each block in one separated bash in parallel):
 ```sh
 $ grunt serve
 ```
