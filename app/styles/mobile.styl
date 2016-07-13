@@ -1,6 +1,10 @@
 .page-body
   +below(1055px)
     flex-direction: column
+    align-items: center
+
+  +mobile()
+    align-items: initial
 
 .header
   .page-title
@@ -46,7 +50,10 @@
 .main-container
   +below(1055px)
     flex-direction: column
-  
+
+  +desktop()
+    flex-grow: 1
+
 .filter-box
   +below(1055px)
     height: 294px
@@ -54,17 +61,17 @@
     flex-shrink: 0
     margin-left: 10px
     margin-right: 10px
-    
+
   .fields-line
     +below(1055px)
       justify-content: flex-start
       flex-shrink: 0
       flex-wrap: nowrap
-      
+
   .field-box
     +below(1055px)
       margin-right: 13px
-  
+
 .content-box
   +below(745px)
     padding-right: 10px
@@ -72,29 +79,32 @@
     max-width: initial
     min-width: initial
     background-color: #f0f0f0
-  
+
+  +desktop()
+    flex-grow: 1
+
 .ad-box
   +below(745px)
     height: auto
     flex-direction: column
-  
+
 .photo-container
   +below(745px)
     width: 100%
     height: 254.81px
-  
+
 .ad-info
   +below(745px)
     max-width: 100%
     min-width: 270px
     padding-bottom: 12px
     flex-shrink: 0
-  
+
 .ad-content
   +below(745px)
     padding-right: 16.3px
     height: auto
-  
+
 .ad-footer
   +below(745px)
     height: auto
@@ -103,11 +113,11 @@
     padding-left: 16.3px
     padding-right: 16.3px
     padding-top: 12px
-  
+
   .view-button
     +below(745px)
       width: 100%
-  
+
   .ad-details-list
     +below(745px)
       margin-left: 0
