@@ -1,6 +1,6 @@
-<form action="get" class="filter-box">
+<section class="filter-box">
   <p class="filter-title">Filtros:</p>
-  <fieldset class="filter-fields-line">
+  <section class="fields-line">
     <div class="field-box">
       <label class="field-label" for="id">Id</label>
       <input type="number" id="idInput" class="default-field" ng-model="adsPage.filter.id" ng-blur="adsPage.getAdsById()">
@@ -9,8 +9,8 @@
       <label class="field-label" for="areaInput">Área</label>
       <input type="number" id="areaInput" class="default-field" ng-model="adsPage.filter.area">
     </div>
-  </fieldset>
-  <fieldset class="filter-fields-line">
+  </section>
+  <section class="fields-line">
     <div class="field-box">
       <label class="field-label" for="bedsInput">Quartos</label>
       <input type="number" id="bedsInput" class="default-field" ng-model="adsPage.filter.beds">
@@ -19,23 +19,28 @@
       <label class="field-label" for="bathsInput">Banheiros</label>
       <input type="number" id="bathsInput" class="default-field" ng-model="adsPage.filter.baths">
     </div>
-  </fieldset>
-  <fieldset class="filter-fields-line">
+  </section>
+  <section class="composed-fields-line">
     <label class="field-label">Valor</label>
-    <input type="number" id="minValueInput" class="default-field inline-field" ng-model="adsPage.filter.min">
-    <span class="field-conector-box">
-      <span class="field-conector"></span>
-    </span>
-    <input type="number" id="maxValueInput" class="default-field inline-field" ng-model="adsPage.filter.max">
-  </fieldset>
-</form>
+    <section class="composed-field-box">
+      <input type="number" id="minValueInput" placeholder="min" class="default-field inline-field" ng-model="adsPage.filter.min">
+      <span class="field-conector-box">
+        <span class="field-conector"></span>
+      </span>
+      <input type="number" id="maxValueInput" placeholder="max" class="default-field inline-field" ng-model="adsPage.filter.max">
+    </section>
+  </section>
+</section>
 
 <ul class="vertical-list ads-list content-box">
-  <li class="spinner" ng-show="adsPage.loading"></li>
+  <li class="spinner-box" ng-show="adsPage.loading">
+    <div class="spinner"></div>
+  </li>
   <li ng-repeat="ad in adsPage.advs | filter: adsPage.adFilter | startFrom: adsPage | limitTo: adsPage.pageSize" class="ad-box">
     <section class="photo-container">
-      <img ng-src="https://placeholdit.imgix.net/~text?txtsize=33&txt=297.7%C3%97224&w=297.7&h=224" alt="{{ ad.title }}" class="ad-photo">
-      <span class="ad-price" ng-bind="ad.price"></span>
+      <img ng-src="https://placeholdit.imgix.net/~text?txtsize=33&txt=Image&w=297.7&h=224" alt="{{ ad.title }}" class="ad-photo">
+      <div class="photo-gradient"></div>
+      <span class="ad-price" ng-bind="'R$ ' + (adsPage.parsePrice(ad.price))"></span>
     </section>
     <section class="ad-info">
       <section class="ad-content">
@@ -50,15 +55,15 @@
         <ul class="ad-details-list horizontal-list">
           <li class="ad-detail size-ico item">
             <span class="area-icon icon"></span>
-            <span ng-bind="(ad.squareMeters) + 'm²'"></span>
+            <span ng-bind="(ad.squareMeters) + ' m²'"></span>
           </li>
           <li class="ad-detail bed-ico item">
             <span class="bath-icon icon"></span>
-            <span ng-bind="(ad.beds) + 'quartos'"></span>
+            <span ng-bind="(ad.beds) + ' quartos'"></span>
           </li>
           <li class="ad-detail bath-ico item">
             <span class="bed-icon icon"></span>
-            <span ng-bind="(ad.baths) + 'banheiros'"></span>
+            <span ng-bind="(ad.baths) + ' banheiros'"></span>
           </li>
         </ul>
         <div class="button view-button highlight-color">Visualizar o anúncio</div>
@@ -69,7 +74,7 @@
     <div class="pagination-box">
       <span ng-click="adsPage.currentPage=adsPage.currentPage-1" ng-class="{disabled: adsPage.currentPage == 0}" class="nav-button button">&lt;</span>
       <span ng-bind="'Page ' + (adsPage.currentPage + 1) + ' of ' + (adsPage.totalPages)" class="page-details"></span>
-      <span ng-click="adsPage.currentPage=adsPage.currentPage+1" ng-class="{disabled: adsPage.currentPage >= adsPage.totalPages}" class="nav-button button">&gt;</span>
+      <span ng-click="adsPage.currentPage=adsPage.currentPage+1" ng-class="{disabled: (adsPage.currentPage + 1) >= adsPage.totalPages}" class="nav-button button">&gt;</span>
     </div>
   </li>
 </ul>

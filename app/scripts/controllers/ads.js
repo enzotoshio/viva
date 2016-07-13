@@ -1,24 +1,5 @@
 ( function () {
   'use strict';
-
-  angular.module( 'vivaApp' )
-    .filter( 'startFrom', function () {
-      return function ( input, vm ) {
-        var page = vm.currentPage * vm.pageSize,
-          items = input.length,
-          totalPages = 0;
-
-        if ( items <= 0 ) {
-          return;
-        }
-
-        totalPages = items / vm.pageSize;
-        vm.totalPages = totalPages;
-
-        return input.slice( page );
-      }
-    } );
-
   /**
    * @ngdoc function
    * @name vivaApp.controller:MainCtrl
@@ -29,22 +10,30 @@
   angular.module( 'vivaApp' )
     .controller( 'AdsCtrl', AdsCtrl );
 
-  AdsCtrl.$inject = [ '$scope', '$window', '$http', 'AdsFactory' ];
+  AdsCtrl.$inject = [ '$scope', '$window', '$http', 'AdsFactory', 'ProvincesFactory' ];
 
-  function AdsCtrl( $scope, $window, $http, AdsFactory ) {
+  function AdsCtrl( $scope, $window, $http, AdsFactory, ProvincesFactory ) {
     var vm = this;
     vm.advs = [];
     vm.filter = {};
     vm.currentPage = 0;
     vm.pageSize = 5;
+    vm.totalPages = 1;
 
     vm.getAdsById = getAdsById;
     vm.getAds = getAds;
     vm.adFilter = adFilter;
     vm.parseLists = parseLists;
     vm.removeDuplicity = removeDuplicity;
+    vm.parsePrice = parsePrice;
 
     vm.getAds();
+
+    function parsePrice( price ) {
+      price = +price;
+
+      return price.toLocaleString( 'de-DE' );
+    }
 
     function getAdsById() {
       var id = vm.filter.id;
@@ -93,8 +82,8 @@
       vm.advs = [];
       vm.loading = true;
 
-      $http.get( 'https://raw.githubusercontent.com/VivaReal/code-challenge/master/provinces.json' )
-        .then( function ( response ) {
+      ProvincesFactory.getAll()
+        .then( function successCallback( response ) {
           Q.all( AdsFactory.getByLocation( response.data ) )
             .then( function ( response ) {
               var parsedList = vm.parseLists( response );
@@ -102,6 +91,8 @@
               vm.advs = parsedList;
               $scope.$apply();
             } );
+        }, function errorCallback() {
+          return;
         } );
     };
 
@@ -121,10 +112,14 @@
         baths = vm.filter.baths,
         min = vm.filter.min,
         max = vm.filter.max,
+        price = parseInt( ad.price ),
         areaCondition = !area || ad.squareMeters == area,
         bedsCondition = !beds || ad.beds == beds,
         bathsCondition = !baths || ad.baths == baths,
-        priceCondition = ( !min && !max ) || parseInt( ad.price ) >= ( min || 0 ) && parseInt( ad.price ) <= ( max || min );
+        maxPriceCondition = max > 0 ? price <= max : true,
+        minPriceCondition = price >= ( min || 0 ),
+        priceCondition = ( !min && !max ) || minPriceCondition && maxPriceCondition;
+
       return areaCondition && bedsCondition && bathsCondition && priceCondition;
     }
   };

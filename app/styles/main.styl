@@ -1,148 +1,101 @@
-global-reset()
-
-div, section, h1, h2, h3, 
-input, fieldset, form, label, 
-span, p, footer, ul, ol, li
-  box-sizing: border-box
-  
-html
-  width: 100%
-  
-html, body
-  min-height: 100%
-
-body
-  background-color: #e0e0e0
-  width: 100%
-  font-family: Roboto
-
 .page-body
   overflow: hidden
   width: 100%
   height: 100%
   background-color: #f0f0f0
-
-.page-title
-  font-size: 24px
-  font-weight: bold
-  font-stretch: condensed
-  color: #ffffff
-  line-height: 60px
-  margin-left: 30px
-  display: inline-block
-  text-transform: uppercase
+  display: flex
+  flex-direction: row
+  flex-wrap: nowrap
 
 .header
   width: 100%
   height: 60px
   background-color: #1190cd
   overflow: hidden
-  
-.building-icon
-  display: block
-  width: 28.8px
-  height: 30.6px
-  background: url(../images/building.svg)
-  background-repeat: no-repeat
-  
-.plus-icon
-  display: block
-  width: 27px
-  height: 26px
-  background: url(../images/plus-icon.svg)
-  background-repeat: no-repeat
-  
-.area-icon
-  display: block
-  width: 24px
-  height: 24px
-  background: url(../images/ic-card-area.svg)
-  background-repeat: no-repeat
-  
-.bath-icon
-  display: block
-  width: 24px
-  height: 24px
-  background: url(../images/ic-card-bathroom.svg)
-  background-repeat: no-repeat
-  
-.bed-icon
-  display: block
-  width: 24px
-  height: 24px
-  background: url(../images/ic-card-beds.svg)
-  background-repeat: no-repeat
+  display: flex
+  flex-direction: row
+  flex-wrap: nowrap
+
+  .logo-container
+    width: 107px
+    height: 60px
+    background-color: #00acff
+    overflow: hidden
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-items: center
+    min-width: 65px
+
+  .page-title
+    font-size: 24px
+    font-weight: bold
+    font-stretch: condensed
+    color: #ffffff
+    margin-left: 30px
+    text-transform: uppercase
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-items: center  
 
 .sidebar
   width: 107px
+  min-width: 69px
   height: 1288px
-  display: block
   background-color: #094e6e
-  float: left
   list-style: none
   padding-top: 15px
-  
+  padding-left: 7px
+  padding-right: 7px
+  display: flex
+  flex-direction: column
+  align-items: stretch
+
   .building-icon
     margin: 7px auto 13.6px
 
   .plus-icon
     margin: 7px auto 11px
-  
+
   .item
     height: 72px
-    clear: both
     font-size: 11px
     font-weight: bold
     font-stretch: condensed
     color: #ffffff
     text-align: center
     margin-bottom: 15px
-    center(91px)
-    
+
   .link
     text-decoration: none
     color: #ffffff
     display: block
     text-align: center
     width: 100%
-  
+
   .title
     border-radius: 4px
     background-color: #00acff
-  
-.logo-container
-  width: 107px
-  height: 60px
-  background-color: #00acff
-  overflow: hidden
-  float: left
-  
-.logo-vivareal
-  width: 48px
-  height: 38px
-  object-fit: contain
-  background-color: #ffffff
-  display: block
-  text-indent: -9999px
-  background: url(../images/logo-vivareal.svg)
-  background-size: 48px 38px
-  background-repeat: no-repeat
-  margin-left: 30px
-  margin-top: 11px
 
 .main-container
-  float: left
   overflow: hidden
-  
+  display: flex
+  flex-direction: row
+  flex-wrap: nowrap
+
 .filter-box
   width: 230px
   height: 1272px
   border-radius: 2px
   background-color: #f9f9f9
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12)
-  float: left
   margin: 16px 20px 0 18px
-  
+  display: flex
+  flex-direction: column
+  flex-wrap: nowrap
+  flex-shrink: 4
+
   .filter-title
     font-family: Roboto
     font-size: 16px
@@ -151,59 +104,37 @@ body
     line-height: 1.25
     color: #666666
     padding: 13px 0 1px 13px
-  
-  .field-box
-    float: left
-    &:nth-child(2)
-      margin-left: 13px
-  
-  .field-label
-    display: block
-    clear: both
-    font-size: 12px
-    line-height: 1.5
-    color: #999999
-    text-transform: uppercase
-    
-  .field-conector-box
-    float: left
-    position: relative
-    height: 36px
-    width: 13px
 
-  .field-conector
-    height: 1px
-    background-color: #cccccc
-    width: inherit
-    display: block
-    align(vertical)
-    
-  .inline-field
-    float: left
-    
-.filter-fields-line
-  clear: both
-  width: 100%
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1)
-  padding: 14px 14px 18px 13px
-  
+  .fields-line
+    width: 100%
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+    padding: 14px 14px 18px 13px
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: space-between
+
+  .composed-fields-line
+    width: 100%
+    padding: 14px 14px 18px 13px
+    display: flex
+    flex-direction: column
+    flex-wrap: wrap
+
 .content-box
-  width: 882px
+  max-width: 882px
+  min-width: 715px
+  display: flex
+  flex-direction: column
   height: 100%
   border-radius: 2px
   background-color: #ffffff
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12)
-  float: left
   margin-top: 16px
   padding-top: 15px
-  
-.default-field
-  width: 95px
-  height: 36px
-  border-radius: 2px
-  background-color: #ffffff
-  border: solid 1px #979797
-  
+  padding-left: 16.5px
+  padding-right: 16.5px
+
 .ad-box
   height: 224px
   border-radius: 2px
@@ -211,54 +142,74 @@ body
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.26)
   overflow: hidden
   margin-bottom: 18px
-  center(849px)
-  
+  display: flex
+  flex-direction: row
+  flex-wrap: nowrap
+
 .ad-photo
   width: 100%
   height: 100%
-  
+  flex-shrink: 0
+
+.photo-gradient
+  position: absolute
+  bottom: 0
+  left: 0
+  height: 99px
+  width: 100%
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(20, 13, 13, 0.3) 32%, rgba(0, 0, 0, 0))
+  z-index: 1
+
+.ad-price
+  position: absolute
+  bottom: 10px
+  left: 12px
+  font-family: 'Open Sans', sans-serif
+  font-size: 23.1px
+  font-weight: 600
+  line-height: 1.39
+  color: #ffffff
+  z-index: 2
+
 .photo-container
   width: 297.7px
+  height: 223.6px
   overflow: hidden
-  float: left
-  
-.shadowless-box
-  border-radius: 2px
-  border: solid 1px #e5e5e5
-  
+  display: block
+  position: relative
+  flex-shrink: 0
+
 .id-box
-  width: 55px
   height: 18px
   background-color: #ffffff
   margin-bottom: 11.6px
   color: #e5e5e5
-  position: relative
-  
+  display: inline-block
+  flex-shrink: 0
+  padding-left: 6px
+  padding-right: 6px
+
   .text
     text-transform: uppercase
     color: #878787
     font-size: 13px
     font-weight: bold
-    line-height: 1.15
     color: #878787
-    width: 46px
-    overflow: hidden
-    text-overflow: ellipsis
-    white-space: nowrap
-    display: block
-    align(both)
-  
+
 .ad-info
   height: 100%
-  width: 551px
-  float: left
+  max-width: 551px
+  min-width: 418px
   padding-top: 12px
-  
+  display: flex
+  flex-direction: column
+
 .ad-content
   padding-left: 16.3px
   padding-right: 33px
   margin-bottom: 18px
   height: 144px
+  overflow: hidden
 
 .ad-title
   width: 100%
@@ -271,7 +222,7 @@ body
   font-stretch: condensed
   line-height: 1.5
   margin-bottom: 3.4px
-  
+
 .ad-description
   width: 100%
   font-size: 14px
@@ -279,24 +230,24 @@ body
   font-stretch: condensed
   line-height: 1.5
   color: #999999
-  
+
 .ad-footer
   width: 100%
   height: 50px
   background-color: #fafafa
   box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1)
-  position: relative
-  
+  display: flex
+  flex-direction: row
+  align-items: center
+  justify-content: space-between
+
   .view-button
-    float: right
-    right: 8px
-    align(vertical)
-  
+    align-self: center
+    margin-right: 8px
+
   .ad-details-list
-    margin-top: 6px
     margin-left: 21px
     overflow: hidden
-    float: left
 
     .ad-detail
       position: relative
@@ -310,73 +261,10 @@ body
       .icon
         margin: 0 auto
         clear: both
-      
-.horizontal-list
-  display: block
-  
-  .item
-    float: left
-    
-.button
-  text-transform: uppercase
-  border-radius: 2px
-  background-color: #00acff
-  padding: 9px 8px 8px 8px
-  box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.12)
-  display: inline-block
-  font-size: 14px
-  font-weight: bold
-  font-stretch: condensed
-  line-height: 1.14
-  color: #ffffff
 
 .pagination-line
-  position: relative
-  display: block
+  display: flex
+  flex-direction: column
+  align-items: center
   height: 32px
   margin-bottom: 15px
-
-.pagination-box
-  align(horizontal)
-  .page-details
-    font-size: 14px
-    font-weight: normal
-    font-stretch: condensed
-    color: #999
-
-  .nav-button
-    cursor: pointer
-    user-select: none
-
-    &.disabled
-      background-color: #cccccc
-      pointer-events: none
-
-@keyframes spinner
-  to {transform: rotate(360deg)}
-
-@-webkit-keyframes spinner 
-  to {-webkit-transform: rotate(360deg)}
- 
-.spinner
-  position: relative
-  min-width: 50px
-  min-height: 50px
- 
-.spinner:before
-  content: ''
-  position: absolute
-  top: 50%
-  left: 50%
-  width: 50px
-  height: 50px
-  margin-top: -13px
-  margin-left: -13px
- 
-.spinner:not(:required):before
-  content: ''
-  border-radius: 50%
-  border: 1px solid #ffffff
-  border-top-color: #00acff
-  animation: spinner .7s linear infinite
-  -webkit-animation: spinner .7s linear infinite

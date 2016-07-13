@@ -1,4 +1,4 @@
-( function() {
+( function () {
   'use strict';
 
   /**
@@ -29,7 +29,7 @@
     function getByLocation( places ) {
       var calls = [];
 
-      angular.forEach( places, function( place ) {
+      angular.forEach( places, function ( place ) {
         var bottomRight = place.boundaries.bottomRight,
           topLeft = place.boundaries.upperLeft;
 
