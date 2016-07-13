@@ -56,7 +56,7 @@
 
 .filter-box
   +below(1055px)
-    height: 294px
+    height: auto
     width: initial
     flex-shrink: 0
     margin-left: 10px
@@ -67,10 +67,30 @@
       justify-content: flex-start
       flex-shrink: 0
       flex-wrap: nowrap
+      flex-direction: row
+      justify-content: space-between
+
+  .field-box:not(:last-child)
+    +below(1055px)
+      margin-right: 10%
 
   .field-box
     +below(1055px)
-      margin-right: 13px
+      width: 45%
+
+  .default-field
+    +below(1055px)
+      width: 100%
+
+  .composed-fields-line
+    .inline-field
+      width: 45%
+
+    .field-conector-box
+      width: 10%
+
+    .field-conector
+      width: 100%
 
 .content-box
   +below(745px)
@@ -117,8 +137,13 @@
   .view-button
     +below(745px)
       width: 100%
+      margin-right: 0
 
   .ad-details-list
     +below(745px)
       margin-left: 0
       margin-bottom: 10px
+
+    .ad-detail:last-child
+      +below(745px)
+        margin-right: 0
