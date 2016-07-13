@@ -1,23 +1,32 @@
 # viva
+
 Viva Real - Front-end Test
 
 ## Installation
+
 ```sh
 $ npm i
+$ npm i -g protractor
 $ bower i
 ```
 
-### Run
+## Run
 ```sh
 $ grunt serve
 ```
 
-### Test (Alternative)
+## Test (Alternative)
 
 E2e tests - Protractor:
 ```sh
-$ npm i -g protractor@1.8.0
+$ grunt serve
+```
+
+```sh
 $ webdriver-manager update
 $ webdriver-manager start
+```
+
+```sh
 $ protractor tests/e2e/config.js
 ```
