@@ -45,7 +45,7 @@
     <section class="ad-info">
       <section class="ad-content">
         <p class="id-box shadowless-box">
-          <span ng-bind="'ID.' + (ad.id)" class="text"></span>
+          <span ng-bind="'ID. ' + (ad.id)" class="text"></span>
         </p>
         <h3 ng-bind="ad.title" class="ad-title"></h3>
         <p class="ad-description" ng-bind="ad.description">
@@ -55,15 +55,15 @@
         <ul class="ad-details-list horizontal-list">
           <li class="ad-detail size-ico item">
             <span class="area-icon icon"></span>
-            <span ng-bind="(ad.squareMeters) + ' m²'"></span>
+            <span ng-bind="(ad.squareMeters) + ' m²'" class="area-value"></span>
           </li>
           <li class="ad-detail bed-ico item">
-            <span class="bath-icon icon"></span>
-            <span ng-bind="(ad.beds) + ' quartos'"></span>
+            <span class="bed-icon icon"></span>
+            <span ng-bind="(ad.beds) + ' quartos'" class="beds-value"></span>
           </li>
           <li class="ad-detail bath-ico item">
-            <span class="bed-icon icon"></span>
-            <span ng-bind="(ad.baths) + ' banheiros'"></span>
+            <span class="bath-icon icon"></span>
+            <span ng-bind="(ad.baths) + ' banheiros'" class="baths-value"></span>
           </li>
         </ul>
         <div class="button view-button highlight-color">Visualizar o anúncio</div>
