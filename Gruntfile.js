@@ -17,9 +17,6 @@ module.exports = function ( grunt ) {
 
   // Automatically load required Grunt tasks
   require( 'jit-grunt' )( grunt, {
-    useminPrepare: 'grunt-usemin',
-    ngtemplates: 'grunt-angular-templates',
-    cdnify: 'grunt-google-cdn',
     stylus: 'stylus'
   } );
 
@@ -124,19 +121,6 @@ module.exports = function ( grunt ) {
       app: {
         src: [ '<%= yeoman.app %>/index.html' ],
         ignorePath: /\.\.\//
-      }
-    },
-
-    ngtemplates: {
-      dist: {
-        options: {
-          module: 'vivaApp',
-          htmlmin: '<%= htmlmin.dist.options %>',
-          usemin: 'scripts/scripts.js'
-        },
-        cwd: '<%= yeoman.app %>',
-        src: 'views/{,*/}*.html',
-        dest: '.tmp/templateCache.js'
       }
     },
 

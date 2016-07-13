@@ -1,12 +1,23 @@
 # viva
+Viva Real - Front-end Test
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.15.1.
+## Installation
+```sh
+$ npm i
+$ bower i
+```
 
-## Build & development
+### Run
+```sh
+$ grunt serve
+```
 
-Run `grunt` for building and `grunt serve` for preview.
+### Test (Alternative)
 
-## Testing
-
-Running `grunt test` will run the unit tests with karma.
+E2e tests - Protractor:
+```sh
+$ npm i -g protractor@1.8.0
+$ webdriver-manager update
+$ webdriver-manager start
+$ protractor tests/e2e/config.js
+```
