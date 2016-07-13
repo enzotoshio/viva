@@ -7,10 +7,13 @@ Viva Real - Front-end Test
 ```sh
 $ npm i
 $ npm i -g protractor
+$ npm i -g bower
+$ npm i -g grunt-cli
 $ bower i
 ```
 
 ## Run
+
 ```sh
 $ grunt serve
 ```
@@ -28,5 +31,5 @@ $ webdriver-manager start
 ```
 
 ```sh
-$ protractor tests/e2e/config.js
+$ protractor test/config.js
 ```
